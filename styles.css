@@ -15,6 +15,7 @@ body {
 }
 /* Contenedor de la tarjeta */
 .tarjeta {
+  position: relative;
   width: 300px;
   height: 400px;
   perspective: 1000px; /* Para el efecto de voltear */
@@ -88,16 +89,36 @@ body {
   font-size: 16px;
   margin-bottom: 10px;
 }
+.posterior button {
+  padding: 12px 20px;
+  background-color: #fcb902;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
 .posterior button:hover {
   background-color: #0056b3;
 }
-/* Voltear la tarjeta cuando se hace clic en
-        Detalles */
-.tarjeta:hover .frontal {
-  transform: rotateY(180deg); /* Voltea la
-        cara frontal */
+.tarjeta .frontal,
+.tarjeta .posterior {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
-.tarjeta:hover .posterior {
-  transform: rotateY(0deg); /* Muestra la
-        cara posterior */
+
+/* Contenedor que rota */
+.tarjeta.volteada .frontal {
+  transform: rotateY(180deg);
+}
+
+.tarjeta.volteada .posterior {
+  transform: rotateY(0deg);
+}
+
+img {
+  width: 60px;
+  height: 60px;
 }
